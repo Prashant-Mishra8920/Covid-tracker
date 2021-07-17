@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CovidTestActivity"
+    android:padding="@dimen/DefaultPadding"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/covidTestToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="@dimen/DefaultVerticalMargin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Covid Test"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+            android:layout_below="@id/covidTestToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Have you taken the vaccination?"
+                        android:textColor="@color/white"
+                        android:background="@color/orange"
+                        android:padding="@dimen/DefaultPadding" />
+                    <RadioGroup
+                        android:id="@+id/radioGroup1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/DefaultPaddingShort">
+                        <RadioButton
+                            android:id="@+id/rg1b1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="yes"
+                            android:minHeight="20dp"/>
+                        <RadioButton
+                            android:id="@+id/rg1b2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="no"
+                            android:minHeight="20dp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Which vaccine you have been vaccinated with?"
+                        android:textColor="@color/white"
+                        android:background="@color/customBlue"
+                        android:padding="@dimen/DefaultPadding" />
+                    <RadioGroup
+                        android:id="@+id/radioGroup2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/DefaultPaddingShort">
+                        <RadioButton
+                            android:id="@+id/rg2b1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Covishield"
+                            android:minHeight="20dp"/>
+                        <RadioButton
+                            android:id="@+id/rg2b2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Covaxin"
+                            android:minHeight="20dp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Number of doses taken"
+                        android:textColor="@color/white"
+                        android:background="@color/orange"
+                        android:padding="@dimen/DefaultPadding" />
+                    <RadioGroup
+                        android:id="@+id/radioGroup3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/DefaultPaddingShort">
+                        <RadioButton
+                            android:id="@+id/rg3b1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="First Dose"
+                            android:minHeight="20dp"/>
+                        <RadioButton
+                            android:id="@+id/rg3b2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Both doses"
+                            android:minHeight="20dp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Did you get infected with covid in past 3 months?"
+                        android:textColor="@color/white"
+                        android:background="@color/customBlue"
+                        android:padding="@dimen/DefaultPadding" />
+                    <RadioGroup
+                        android:id="@+id/radioGroup4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/DefaultPaddingShort">
+                        <RadioButton
+                            android:id="@+id/rg4b1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Yes"
+                            android:minHeight="20dp"/>
+                        <RadioButton
+                            android:id="@+id/rg4b2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="No"
+                            android:minHeight="20dp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Are you currently experiencing any of these symptoms?"
+                        android:textColor="@color/white"
+                        android:background="@color/orange"
+                        android:padding="@dimen/DefaultPadding" />
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/DefaultPaddingShort">
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cough"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fever"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sore throat"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Body ache"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Difficulty in breathing"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loss of taste and smell"/>
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/none1"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="None of these"/>
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Do you have any of the following conditions?"
+                        android:textColor="@color/white"
+                        android:background="@color/customBlue"
+                        android:padding="@dimen/DefaultPadding" />
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/DefaultPaddingShort">
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diabetes"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hypertension"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lung Disease"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Heart Disease"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Asthma"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kidney disorder"/>
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/none2"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="None of these"/>
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Have you visited any of these places in past 14 days?"
+                        android:textColor="@color/white"
+                        android:background="@color/orange"
+                        android:padding="@dimen/DefaultPadding" />
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/DefaultPaddingShort"
+                        app:singleSelection="true">
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Any states of India"/>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Abroad"/>
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/none3"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="None of these"/>
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/resultCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/DefaultRadius"
+                app:cardUseCompatPadding="true"
+                android:layout_marginVertical="@dimen/DefaultVerticalMargin">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/okChip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please fill the details"
+                        android:textColor="@color/white"
+                        android:background="@color/success"
+                        android:padding="@dimen/DefaultPadding" />
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/doneBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ok"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+    </LinearLayout>
+</ScrollView>
