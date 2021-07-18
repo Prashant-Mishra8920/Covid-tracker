@@ -1,8 +1,11 @@
 package com.example.covitrack.activities
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +18,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.covitrack.R
 import com.example.covitrack.databinding.ActivityMainBinding
 import com.example.covitrack.repository.Repository
+import com.example.covitrack.room.CovidDao
+import com.example.covitrack.room.CovidDatabase
 import com.example.covitrack.viewModel.CoviViewModel
 import com.example.covitrack.viewModel.ViewModelFactory
 import com.github.mikephil.charting.charts.LineChart
@@ -26,13 +31,17 @@ import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     lateinit var shareprefs:SharedPreferences
+    lateinit var db:CovidDatabase
+    lateinit var viewModel:CoviViewModel
     var arrayOfCases:ArrayList<Entry> = arrayListOf()
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Covitrack)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
+        db = CovidDatabase.getDatabase(this)
         shareprefs = getSharedPreferences("covidTest", MODE_PRIVATE)
 
         val state = shareprefs.getString("state","")
@@ -44,9 +53,31 @@ class MainActivity : AppCompatActivity() {
             binding.covidTestCard.setCardBackgroundColor(getColorStateList(R.color.danger))
         }
         val viewModelFactory = ViewModelFactory(Repository())
-        val viewModel = ViewModelProvider(this,viewModelFactory).get(CoviViewModel::class.java)
-        viewModel.getCovidCases()
-        viewModel.covidResponse.observe(this, Observer {
+        viewModel = ViewModelProvider(this,viewModelFactory).get(CoviViewModel::class.java)
+
+        if(isNetworkAvailable(this)){
+            viewModel.getCovidCases()
+            viewModel.covidResponse.observe(this, Observer {
+                viewModel.insertCases(db,it)
+                updateUi()
+            })
+        }
+        else{
+            updateUi()
+        }
+
+        binding.takeTestButton.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, CovidTestActivity::class.java))
+        })
+
+        binding.vaccine.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, VaccinationActivity::class.java))
+        })
+
+    }
+
+    private fun updateUi(){
+        viewModel.getAllCases(db).observe(this, Observer {
             val formatter = DecimalFormat("##,##,##0")
             binding.dailyCases.text = formatter.format(it.casesTimeSeries?.last()?.dailyconfirmed?.toInt())
             binding.total.text = formatter.format(it.casesTimeSeries?.last()?.totalconfirmed?.toInt())
@@ -59,15 +90,6 @@ class MainActivity : AppCompatActivity() {
             }
             chart()
         })
-
-        binding.takeTestButton.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, CovidTestActivity::class.java))
-        })
-
-        binding.vaccine.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, VaccinationActivity::class.java))
-        })
-
     }
 
     private fun chart(){
@@ -114,5 +136,10 @@ class MainActivity : AppCompatActivity() {
         lineChart.axisRight.setDrawGridLines(false);
         lineChart.axisRight.setDrawLabels(false);
         lineChart.axisRight.setDrawAxisLine(false);
+    }
+    fun isNetworkAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        return activeNetwork?.isConnectedOrConnecting == true
     }
 }

@@ -3,6 +3,8 @@
     package="com.example.covitrack">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,8 @@
         android:theme="@style/Theme.Covitrack">
         <activity android:name=".activities.VaccinationActivity"></activity>
         <activity android:name=".activities.CovidTestActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

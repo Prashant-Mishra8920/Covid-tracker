@@ -1,8 +1,14 @@
 package com.example.covitrack.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "Covid_table")
 data class CovidCases(
+
+	@PrimaryKey(autoGenerate = false)
+	val key:Int = 0,
 
 	@field:SerializedName("cases_time_series")
 	val casesTimeSeries: List<CasesTimeSeriesItem?>? = null,

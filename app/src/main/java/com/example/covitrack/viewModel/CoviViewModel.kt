@@ -8,6 +8,8 @@ import com.example.covitrack.model.SearchByDistrict
 import com.example.covitrack.model.SearchByPinCode
 import com.example.covitrack.model.SessionsItem
 import com.example.covitrack.repository.Repository
+import com.example.covitrack.room.CovidDao
+import com.example.covitrack.room.CovidDatabase
 import kotlinx.coroutines.launch
 
 class CoviViewModel(private val repository: Repository):ViewModel() {
@@ -34,5 +36,21 @@ class CoviViewModel(private val repository: Repository):ViewModel() {
             vaccineDistrictResponse.value = response
         }
     }
+
+    fun insertCases(db: CovidDatabase,covidCases: CovidCases){
+        viewModelScope.launch {
+            repository.insertCases(db,covidCases)
+        }
+    }
+
+    fun getAllCases(db: CovidDatabase) = repository.getAllCases(db)
+
+    fun delete(db:CovidDatabase){
+        viewModelScope.launch {
+            repository.deleteAllCases(db)
+        }
+    }
+
+
 
 }
